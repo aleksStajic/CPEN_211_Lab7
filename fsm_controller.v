@@ -39,6 +39,8 @@ module fsm_control(clk, reset, opcode_in, op_in, nsel, w_out, DP_CNTRL, TOP_CNTR
     reg w_out;
     reg [8:0] DP_CNTRL;
     reg [1:0] nsel;
+    reg [3:0] TOP_CNTRL;
+    reg [1:0] MEM_CMD;
 
     vDFF_CNTRL #(`SW) U0(clk, next_state_reset, present_state); //instantiating flip-flop
 
@@ -94,7 +96,7 @@ module fsm_control(clk, reset, opcode_in, op_in, nsel, w_out, DP_CNTRL, TOP_CNTR
                   
             `S_ADD : {next_state, DP_CNTRL, nsel, w_out} = {`S_WriteReg, {4'b0010, 2'b00, 2'b00, 1'b0}, 2'b11, 1'b0}; // no nsel
 
-            `S_CMP : {next_state, DP_CNTRL, nsel, w_out} = {`S_WAIT, {4'b0001, 2'b00, 2'b00, 1'b0}, 2'b11, 1'b0}; // no nsel
+            `S_CMP : {next_state, DP_CNTRL, nsel, w_out} = {`S_IF1, {4'b0001, 2'b00, 2'b00, 1'b0}, 2'b11, 1'b0}; // no nsel
 
             `S_AND : {next_state, DP_CNTRL, nsel, w_out} = {`S_WriteReg, {4'b0010, 2'b00, 2'b00, 1'b0}, 2'b11, 1'b0}; // no nsel
 
@@ -103,9 +105,9 @@ module fsm_control(clk, reset, opcode_in, op_in, nsel, w_out, DP_CNTRL, TOP_CNTR
             `S_WriteReg : 
             //if doing immediate MOV, make sure vsel is 2
             if(opcode_in === `OPCODE_MOV && op_in === 2'b10) begin //if immediate move, write to Rn
-                {next_state, DP_CNTRL, nsel, w_out} = {`S_WAIT, {4'b0000, 2'b00, 2'b10, 1'b1}, 2'b00, 1'b0}; //Rn  
+                {next_state, DP_CNTRL, nsel, w_out} = {`S_IF1, {4'b0000, 2'b00, 2'b10, 1'b1}, 2'b00, 1'b0}; //Rn  
             end else begin //else, we set vsel to 0
-                {next_state, DP_CNTRL, nsel, w_out} = {`S_WAIT, {4'b0000, 2'b00, 2'b00, 1'b1}, 2'b01, 1'b0}; //Rd
+                {next_state, DP_CNTRL, nsel, w_out} = {`S_IF1, {4'b0000, 2'b00, 2'b00, 1'b1}, 2'b01, 1'b0}; //Rd
             end
 
             default : {next_state, DP_CNTRL, nsel, w_out} = {{`SW{1'bx}}, 9'bxxxxxxxxx, 2'bxx, 1'bx}; //default is undefined

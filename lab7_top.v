@@ -13,13 +13,13 @@ module lab7_top(KEY,SW,LEDR,HEX0,HEX1,HEX2,HEX3,HEX4,HEX5);
     wire [15:0] read_data;
     wire [15:0] dout_bus;
     wire [15:0] cpu_out;
-    wire N, V, Z;
+    wire N, V, Z, w;
     wire [1:0] mem_cmd_bus;
     wire [8:0] mem_addr_bus;
     wire enable_tri;
 
-    RAM MEM(~KEY[0], mem_addr_bus[7:0], mem_addr_bus[7:0], 0, 0, dout_bus); //instantiating RAM
-    cpu CPU(~KEY[0], ~KEY[1], read_data, cpu_out, N, V, Z, mem_cmd_bus, mem_addr_bus); //CPU instantiation
+    RAM MEM(~KEY[0], mem_addr_bus[7:0], mem_addr_bus[7:0], 1'b0, 16'd0, dout_bus); //instantiating RAM
+    cpu CPU(~KEY[0], ~KEY[1], read_data, cpu_out, N, V, Z, w, mem_cmd_bus, mem_addr_bus); //CPU instantiation
 
     assign enable_tri = (`MREAD === mem_cmd_bus) & (mem_addr_bus[8] === 1'b0); //AND gate input to tri-state driver
     assign read_data = enable_tri ? dout_bus : {16{1'bz}}; //setting up tri-state driver logic    
@@ -27,9 +27,9 @@ module lab7_top(KEY,SW,LEDR,HEX0,HEX1,HEX2,HEX3,HEX4,HEX5);
 endmodule
 
 module RAM(clk,read_address,write_address,write,din,dout);
-  parameter data_width = 32; 
-  parameter addr_width = 4;
-  parameter filename = "data.txt";
+  parameter data_width = 16; 
+  parameter addr_width = 8;
+  parameter filename = "test.txt";
 
   input clk;
   input [addr_width-1:0] read_address, write_address;

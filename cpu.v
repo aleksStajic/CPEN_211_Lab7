@@ -1,4 +1,4 @@
-module cpu(clk, reset, in, out, N, V, Z, mem_cmd, mem_addr);
+module cpu(clk, reset, in, out, N, V, Z, w, mem_cmd, mem_addr);
     input clk, reset;
     input [15:0] in;
     output [15:0] out;
@@ -82,13 +82,13 @@ module cpu(clk, reset, in, out, N, V, Z, mem_cmd, mem_addr);
                     .op_in(op_out), 
                     .nsel(nsel_fsm), 
                     .w_out (w), 
-                    .DP_CNTRL(dp_cntrl)
-                    .TOP_CNTRL(top_cntrl)
+                    .DP_CNTRL(dp_cntrl),
+                    .TOP_CNTRL(top_cntrl),
                     .MEM_CMD(mem_cmd)
                  );
 
     
-    vDFFE_PC PCREG(clk, top_cntrl[3], next_pc, PC); //instantiating program counter register with load enable
+    vDFFE_PC #(9) PCREG(clk, top_cntrl[3], next_pc, PC); //instantiating program counter register with load enable
 
     assign next_pc = top_cntrl[1] ? 9'd0 : PC + 1'b1; //intantiating PC multiplexer
 

@@ -9,23 +9,23 @@ z2
 cModel Technology
 dC:/Users/sstaj/Desktop/UBC/CPEN_211/CPEN_211_Lab6
 vALU
-Z0 !s110 1638039584
+Z0 !s110 1638071204
 !i10b 1
-!s100 4bjVl202P^2TIl8fXe__H0
-I_nA^GgR]U>ZR^LlI>o=lZ3
+!s100 O88U7f0dRMhHe9=2Ecake2
+IH=SRT:X8Bih68@GcE_CeL1
 Z1 VDg1SIo80bB@j0V0VzS_@n1
-Z2 dC:/Users/sstaj/Desktop/UBC/CPEN_211/CPEN_211_Lab7/ModelSim_Testing
-w1638038151
-8C:/Users/sstaj/Desktop/UBC/CPEN_211/CPEN_211_Lab7/alu.v
-FC:/Users/sstaj/Desktop/UBC/CPEN_211/CPEN_211_Lab7/alu.v
+Z2 dC:/Users/sstaj/Desktop/UBC/CPEN_211/CPEN_211_Lab7/CPEN_211_Lab7/ModelSim_Testing
+w1638060061
+8C:/Users/sstaj/Desktop/UBC/CPEN_211/CPEN_211_Lab7/CPEN_211_Lab7/alu.v
+FC:/Users/sstaj/Desktop/UBC/CPEN_211/CPEN_211_Lab7/CPEN_211_Lab7/alu.v
 L0 1
 Z3 OV;L;10.5b;63
 r1
 !s85 0
 31
-Z4 !s108 1638039584.000000
-!s107 C:/Users/sstaj/Desktop/UBC/CPEN_211/CPEN_211_Lab7/alu.v|
-!s90 -reportprogress|300|-work|work|-stats=none|C:/Users/sstaj/Desktop/UBC/CPEN_211/CPEN_211_Lab7/alu.v|
+Z4 !s108 1638071204.000000
+!s107 C:/Users/sstaj/Desktop/UBC/CPEN_211/CPEN_211_Lab7/CPEN_211_Lab7/alu.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/Users/sstaj/Desktop/UBC/CPEN_211/CPEN_211_Lab7/CPEN_211_Lab7/alu.v|
 !i113 1
 Z5 o-work work
 Z6 tCvgOpt 0
@@ -33,31 +33,31 @@ n@a@l@u
 vcpu
 R0
 !i10b 1
-!s100 8ngb:gRN?GfVf;XdP:kXR0
-I]aI@=<R07bZncI<7@SO=D0
+!s100 _bZe>PmUclRf<TI?V5V3N2
+I@n?ogFjSa2=OS8YOk=1003
 R1
 R2
-w1637539585
-8C:/Users/sstaj/Desktop/UBC/CPEN_211/CPEN_211_Lab7/cpu.v
-FC:/Users/sstaj/Desktop/UBC/CPEN_211/CPEN_211_Lab7/cpu.v
+Z7 w1638068743
+Z8 8C:/Users/sstaj/Desktop/UBC/CPEN_211/CPEN_211_Lab7/CPEN_211_Lab7/cpu.v
+Z9 FC:/Users/sstaj/Desktop/UBC/CPEN_211/CPEN_211_Lab7/CPEN_211_Lab7/cpu.v
 L0 1
 R3
 r1
 !s85 0
 31
 R4
-!s107 C:/Users/sstaj/Desktop/UBC/CPEN_211/CPEN_211_Lab7/cpu.v|
-!s90 -reportprogress|300|-work|work|-stats=none|C:/Users/sstaj/Desktop/UBC/CPEN_211/CPEN_211_Lab7/cpu.v|
+Z10 !s107 C:/Users/sstaj/Desktop/UBC/CPEN_211/CPEN_211_Lab7/CPEN_211_Lab7/cpu.v|
+Z11 !s90 -reportprogress|300|-work|work|-stats=none|C:/Users/sstaj/Desktop/UBC/CPEN_211/CPEN_211_Lab7/CPEN_211_Lab7/cpu.v|
 !i113 1
 R5
 R6
 vcpu_tb
-R0
+Z12 !s110 1638039584
 !i10b 1
 !s100 QffY5flTBBS[<mekBL`W]2
 I?a89GgIBHOBTgEY2NRK800
 R1
-R2
+Z13 dC:/Users/sstaj/Desktop/UBC/CPEN_211/CPEN_211_Lab7/ModelSim_Testing
 w1637949900
 8C:/Users/sstaj/Desktop/UBC/CPEN_211/CPEN_211_Lab7/cpu_tb.v
 FC:/Users/sstaj/Desktop/UBC/CPEN_211/CPEN_211_Lab7/cpu_tb.v
@@ -66,7 +66,7 @@ R3
 r1
 !s85 0
 31
-R4
+Z14 !s108 1638039584.000000
 !s107 C:/Users/sstaj/Desktop/UBC/CPEN_211/CPEN_211_Lab7/cpu_tb.v|
 !s90 -reportprogress|300|-work|work|-stats=none|C:/Users/sstaj/Desktop/UBC/CPEN_211/CPEN_211_Lab7/cpu_tb.v|
 !i113 1
@@ -76,30 +76,30 @@ vdatapath
 R0
 !i10b 1
 !s100 <o2DG:Moj4CJSmn02?b7m3
-IhJ:n^a_XKHh<j`J8:5c6O1
+I1DQhaOL5bQkjo:MGhd=Pc0
 R1
 R2
-Z7 w1637538291
-Z8 8C:/Users/sstaj/Desktop/UBC/CPEN_211/CPEN_211_Lab7/datapath.v
-Z9 FC:/Users/sstaj/Desktop/UBC/CPEN_211/CPEN_211_Lab7/datapath.v
+Z15 w1637538291
+Z16 8C:/Users/sstaj/Desktop/UBC/CPEN_211/CPEN_211_Lab7/CPEN_211_Lab7/datapath.v
+Z17 FC:/Users/sstaj/Desktop/UBC/CPEN_211/CPEN_211_Lab7/CPEN_211_Lab7/datapath.v
 L0 1
 R3
 r1
 !s85 0
 31
 R4
-Z10 !s107 C:/Users/sstaj/Desktop/UBC/CPEN_211/CPEN_211_Lab7/datapath.v|
-Z11 !s90 -reportprogress|300|-work|work|-stats=none|C:/Users/sstaj/Desktop/UBC/CPEN_211/CPEN_211_Lab7/datapath.v|
+Z18 !s107 C:/Users/sstaj/Desktop/UBC/CPEN_211/CPEN_211_Lab7/CPEN_211_Lab7/datapath.v|
+Z19 !s90 -reportprogress|300|-work|work|-stats=none|C:/Users/sstaj/Desktop/UBC/CPEN_211/CPEN_211_Lab7/CPEN_211_Lab7/datapath.v|
 !i113 1
 R5
 R6
 vdatapath_tb
-R0
+R12
 !i10b 1
 !s100 PK9^i?aaDBn?0BQmzKD]X2
 I<A4lohk_d:]OQ1QIJ=B563
 R1
-R2
+R13
 w1638039548
 8C:/Users/sstaj/Desktop/UBC/CPEN_211/CPEN_211_Lab7/datapath_tb.v
 FC:/Users/sstaj/Desktop/UBC/CPEN_211/CPEN_211_Lab7/datapath_tb.v
@@ -108,7 +108,7 @@ R3
 r1
 !s85 0
 31
-R4
+R14
 !s107 C:/Users/sstaj/Desktop/UBC/CPEN_211/CPEN_211_Lab7/datapath_tb.v|
 !s90 -reportprogress|300|-work|work|-stats=none|C:/Users/sstaj/Desktop/UBC/CPEN_211/CPEN_211_Lab7/datapath_tb.v|
 !i113 1
@@ -117,31 +117,31 @@ R6
 vfsm_control
 R0
 !i10b 1
-!s100 =maG>oYR77kF>_;VoBZAj2
-ID`Vz>hkN<el5MJdzmLDj@3
+!s100 4G^MXNKD3Ij5XTZeIHR>22
+I5Cb:ag71BSFCBUAL0m=EB2
 R1
 R2
-Z12 w1637719415
-Z13 8C:/Users/sstaj/Desktop/UBC/CPEN_211/CPEN_211_Lab7/fsm_controller.v
-Z14 FC:/Users/sstaj/Desktop/UBC/CPEN_211/CPEN_211_Lab7/fsm_controller.v
-L0 18
+Z20 w1638069885
+Z21 8C:/Users/sstaj/Desktop/UBC/CPEN_211/CPEN_211_Lab7/CPEN_211_Lab7/fsm_controller.v
+Z22 FC:/Users/sstaj/Desktop/UBC/CPEN_211/CPEN_211_Lab7/CPEN_211_Lab7/fsm_controller.v
+L0 24
 R3
 r1
 !s85 0
 31
 R4
-Z15 !s107 C:/Users/sstaj/Desktop/UBC/CPEN_211/CPEN_211_Lab7/fsm_controller.v|
-Z16 !s90 -reportprogress|300|-work|work|-stats=none|C:/Users/sstaj/Desktop/UBC/CPEN_211/CPEN_211_Lab7/fsm_controller.v|
+Z23 !s107 C:/Users/sstaj/Desktop/UBC/CPEN_211/CPEN_211_Lab7/CPEN_211_Lab7/fsm_controller.v|
+Z24 !s90 -reportprogress|300|-work|work|-stats=none|C:/Users/sstaj/Desktop/UBC/CPEN_211/CPEN_211_Lab7/CPEN_211_Lab7/fsm_controller.v|
 !i113 1
 R5
 R6
 vfsm_control_tb
-R0
+R12
 !i10b 1
 !s100 5`4A`T=@o0?Fe5gidjGgf3
 I::1Y^nN^:G4BLO6aO^<Tb0
 R1
-R2
+R13
 w1637719771
 8C:/Users/sstaj/Desktop/UBC/CPEN_211/CPEN_211_Lab7/fsm_controller_tb.v
 FC:/Users/sstaj/Desktop/UBC/CPEN_211/CPEN_211_Lab7/fsm_controller_tb.v
@@ -150,221 +150,285 @@ R3
 r1
 !s85 0
 31
-R4
+R14
 !s107 C:/Users/sstaj/Desktop/UBC/CPEN_211/CPEN_211_Lab7/fsm_controller_tb.v|
 !s90 -reportprogress|300|-work|work|-stats=none|C:/Users/sstaj/Desktop/UBC/CPEN_211/CPEN_211_Lab7/fsm_controller_tb.v|
 !i113 1
 R5
 R6
 vinstr_dec
-R0
+Z25 !s110 1638071205
 !i10b 1
 !s100 HH;4ohD2n77l_9QR3JQzf0
-I0lW]1Obbf8[iX78ho=>4m1
+I2]F=Fl4Ed98]o=_b:^gCV1
 R1
 R2
-Z17 w1637562167
-Z18 8C:/Users/sstaj/Desktop/UBC/CPEN_211/CPEN_211_Lab7/instr_dec.v
-Z19 FC:/Users/sstaj/Desktop/UBC/CPEN_211/CPEN_211_Lab7/instr_dec.v
+Z26 w1637562167
+Z27 8C:/Users/sstaj/Desktop/UBC/CPEN_211/CPEN_211_Lab7/CPEN_211_Lab7/instr_dec.v
+Z28 FC:/Users/sstaj/Desktop/UBC/CPEN_211/CPEN_211_Lab7/CPEN_211_Lab7/instr_dec.v
 L0 1
 R3
 r1
 !s85 0
 31
 R4
-Z20 !s107 C:/Users/sstaj/Desktop/UBC/CPEN_211/CPEN_211_Lab7/instr_dec.v|
-Z21 !s90 -reportprogress|300|-work|work|-stats=none|C:/Users/sstaj/Desktop/UBC/CPEN_211/CPEN_211_Lab7/instr_dec.v|
+Z29 !s107 C:/Users/sstaj/Desktop/UBC/CPEN_211/CPEN_211_Lab7/CPEN_211_Lab7/instr_dec.v|
+Z30 !s90 -reportprogress|300|-work|work|-stats=none|C:/Users/sstaj/Desktop/UBC/CPEN_211/CPEN_211_Lab7/CPEN_211_Lab7/instr_dec.v|
 !i113 1
 R5
 R6
 vinstr_reg
-R0
+R25
 !i10b 1
 !s100 ?A4C6aO60nh8KXnA=^3On3
-I7I?a4ScJElJUcCDI9:jHR3
+IzVcT`iTb2:LZfz3kedF:Y0
 R1
 R2
-Z22 w1637459647
-Z23 8C:/Users/sstaj/Desktop/UBC/CPEN_211/CPEN_211_Lab7/instr_reg.v
-Z24 FC:/Users/sstaj/Desktop/UBC/CPEN_211/CPEN_211_Lab7/instr_reg.v
+Z31 w1637459647
+Z32 8C:/Users/sstaj/Desktop/UBC/CPEN_211/CPEN_211_Lab7/CPEN_211_Lab7/instr_reg.v
+Z33 FC:/Users/sstaj/Desktop/UBC/CPEN_211/CPEN_211_Lab7/CPEN_211_Lab7/instr_reg.v
 L0 1
 R3
 r1
 !s85 0
 31
-R4
-Z25 !s107 C:/Users/sstaj/Desktop/UBC/CPEN_211/CPEN_211_Lab7/instr_reg.v|
-Z26 !s90 -reportprogress|300|-work|work|-stats=none|C:/Users/sstaj/Desktop/UBC/CPEN_211/CPEN_211_Lab7/instr_reg.v|
+Z34 !s108 1638071205.000000
+Z35 !s107 C:/Users/sstaj/Desktop/UBC/CPEN_211/CPEN_211_Lab7/CPEN_211_Lab7/instr_reg.v|
+Z36 !s90 -reportprogress|300|-work|work|-stats=none|C:/Users/sstaj/Desktop/UBC/CPEN_211/CPEN_211_Lab7/CPEN_211_Lab7/instr_reg.v|
+!i113 1
+R5
+R6
+vlab7_top
+R25
+!i10b 1
+!s100 QGZK9z6e43KT[=9Jz4>XX1
+I`@`K]bYND^0DT<[5PfVF33
+R1
+R2
+Z37 w1638068687
+Z38 8C:/Users/sstaj/Desktop/UBC/CPEN_211/CPEN_211_Lab7/CPEN_211_Lab7/lab7_top.v
+Z39 FC:/Users/sstaj/Desktop/UBC/CPEN_211/CPEN_211_Lab7/CPEN_211_Lab7/lab7_top.v
+L0 6
+R3
+r1
+!s85 0
+31
+R34
+Z40 !s107 C:/Users/sstaj/Desktop/UBC/CPEN_211/CPEN_211_Lab7/CPEN_211_Lab7/lab7_top.v|
+Z41 !s90 -reportprogress|300|-work|work|-stats=none|C:/Users/sstaj/Desktop/UBC/CPEN_211/CPEN_211_Lab7/CPEN_211_Lab7/lab7_top.v|
+!i113 1
+R5
+R6
+vlab7_top_tb
+R25
+!i10b 1
+!s100 14:LFh;Qgi]:Nm=VLD;n[2
+IiL`W8^TB;LJLJNmfLXlE62
+R1
+R2
+w1638071194
+8C:/Users/sstaj/Desktop/UBC/CPEN_211/CPEN_211_Lab7/CPEN_211_Lab7/lab7_top_tb.v
+FC:/Users/sstaj/Desktop/UBC/CPEN_211/CPEN_211_Lab7/CPEN_211_Lab7/lab7_top_tb.v
+L0 1
+R3
+r1
+!s85 0
+31
+R34
+!s107 C:/Users/sstaj/Desktop/UBC/CPEN_211/CPEN_211_Lab7/CPEN_211_Lab7/lab7_top_tb.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/Users/sstaj/Desktop/UBC/CPEN_211/CPEN_211_Lab7/CPEN_211_Lab7/lab7_top_tb.v|
 !i113 1
 R5
 R6
 vMux8
-R0
+R25
 !i10b 1
 !s100 =g<c@4M;nmPjknUVYON[80
-I6chb=56INfkmF?j2DHDb43
+I?XHIG[K2[mQ9V<lJz19dg1
 R1
 R2
-Z27 w1637096334
-Z28 8C:/Users/sstaj/Desktop/UBC/CPEN_211/CPEN_211_Lab7/regfile.v
-Z29 FC:/Users/sstaj/Desktop/UBC/CPEN_211/CPEN_211_Lab7/regfile.v
+Z42 w1637096334
+Z43 8C:/Users/sstaj/Desktop/UBC/CPEN_211/CPEN_211_Lab7/CPEN_211_Lab7/regfile.v
+Z44 FC:/Users/sstaj/Desktop/UBC/CPEN_211/CPEN_211_Lab7/CPEN_211_Lab7/regfile.v
 L0 55
 R3
 r1
 !s85 0
 31
-R4
-Z30 !s107 C:/Users/sstaj/Desktop/UBC/CPEN_211/CPEN_211_Lab7/regfile.v|
-Z31 !s90 -reportprogress|300|-work|work|-stats=none|C:/Users/sstaj/Desktop/UBC/CPEN_211/CPEN_211_Lab7/regfile.v|
+R34
+Z45 !s107 C:/Users/sstaj/Desktop/UBC/CPEN_211/CPEN_211_Lab7/CPEN_211_Lab7/regfile.v|
+Z46 !s90 -reportprogress|300|-work|work|-stats=none|C:/Users/sstaj/Desktop/UBC/CPEN_211/CPEN_211_Lab7/CPEN_211_Lab7/regfile.v|
 !i113 1
 R5
 R6
 n@mux8
 vmydec
-R0
+R25
 !i10b 1
 !s100 2G1fWzTozOV^9TLeJ@R@T2
-IzK^c?=NB9Ce=8ESL?E8CN2
+I^kbVk`BiY_KPB`zMAE9]10
 R1
 R2
-R27
-R28
-R29
+R42
+R43
+R44
 L0 48
 R3
 r1
 !s85 0
 31
-R4
-R30
-R31
+R34
+R45
+R46
 !i113 1
 R5
 R6
 vnsel_mux
-R0
+R25
 !i10b 1
 !s100 CM8OZ`dQ<_@ID;FDi^PXF3
-IBgKZ2^6e35zg0BI3LOJjn0
+I2Id82FO;;1P9Y4MT^U@BR0
 R1
 R2
-R17
-R18
-R19
+R26
+R27
+R28
 L0 38
 R3
 r1
 !s85 0
 31
 R4
-R20
-R21
+R29
+R30
 !i113 1
 R5
 R6
-vregfile
-R0
+vRAM
+R25
 !i10b 1
-!s100 U<i_8@E1V^Q4IeR5GHdzK2
-I_P^Pzjl^]?ic^g=4B1X1J3
+!s100 89QN_l@SQ:AhV_Ad[J9Io2
+I:eZXlVe65B:Y<kASoJGbV1
 R1
 R2
-R27
-R28
-R29
+R37
+R38
+R39
+L0 29
+R3
+r1
+!s85 0
+31
+R34
+R40
+R41
+!i113 1
+R5
+R6
+n@r@a@m
+vregfile
+R25
+!i10b 1
+!s100 U<i_8@E1V^Q4IeR5GHdzK2
+IZR@EK8z94CI^AVX[ZzW:K0
+R1
+R2
+R42
+R43
+R44
+L0 1
+R3
+r1
+!s85 0
+31
+R34
+R45
+R46
+!i113 1
+R5
+R6
+vshifter
+R0
+!i10b 1
+!s100 ldEd]Q2IIgNjIY_8e:bH80
+IXnz0[oTn42fB`W7J_N<Q<3
+R1
+R2
+w1637630261
+8C:/Users/sstaj/Desktop/UBC/CPEN_211/CPEN_211_Lab7/CPEN_211_Lab7/shifter.v
+FC:/Users/sstaj/Desktop/UBC/CPEN_211/CPEN_211_Lab7/CPEN_211_Lab7/shifter.v
 L0 1
 R3
 r1
 !s85 0
 31
 R4
-R30
-R31
-!i113 1
-R5
-R6
-vshifter
-!s110 1638039585
-!i10b 1
-!s100 ldEd]Q2IIgNjIY_8e:bH80
-I`az]knPT;lDk<F:BPC6T[0
-R1
-R2
-w1637630261
-8C:/Users/sstaj/Desktop/UBC/CPEN_211/CPEN_211_Lab7/shifter.v
-FC:/Users/sstaj/Desktop/UBC/CPEN_211/CPEN_211_Lab7/shifter.v
-L0 1
-R3
-r1
-!s85 0
-31
-!s108 1638039585.000000
-!s107 C:/Users/sstaj/Desktop/UBC/CPEN_211/CPEN_211_Lab7/shifter.v|
-!s90 -reportprogress|300|-work|work|-stats=none|C:/Users/sstaj/Desktop/UBC/CPEN_211/CPEN_211_Lab7/shifter.v|
+!s107 C:/Users/sstaj/Desktop/UBC/CPEN_211/CPEN_211_Lab7/CPEN_211_Lab7/shifter.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/Users/sstaj/Desktop/UBC/CPEN_211/CPEN_211_Lab7/CPEN_211_Lab7/shifter.v|
 !i113 1
 R5
 R6
 vsign_extend
-R0
+R25
 !i10b 1
 !s100 h4J`>BWa=9bEF4eRmO=]d2
-IJS26eO=GbGWm0NJ[?J<hi1
+I1nGK;Q4DSgI]HE[76K9a92
 R1
 R2
-R17
-R18
-R19
+R26
+R27
+R28
 L0 59
 R3
 r1
 !s85 0
 31
 R4
-R20
-R21
+R29
+R30
 !i113 1
 R5
 R6
 vvDFF_CNTRL
 R0
 !i10b 1
-!s100 cI1N]D<CZX22mQI3bMBHP1
-I;Y^eSg9K0@PM1:P=YQ]KD2
+!s100 KX0f7oY>J22T=dY[S_0eN3
+IWU:`@]5NigTQb<PZ_B<RT3
 R1
 R2
-R12
-R13
-R14
-L0 108
+R20
+R21
+R22
+L0 119
 R3
 r1
 !s85 0
 31
 R4
-R15
-R16
+R23
+R24
 !i113 1
 R5
 R6
 nv@d@f@f_@c@n@t@r@l
 vvDFFE
-R0
+R25
 !i10b 1
 !s100 >bHoJ?Y2[1D:85?4GO]>72
-I3X?:=Rifb]V_Xf@H[4`1m1
+I3;SW40Ol<8k8KEQTC1IQ=2
 R1
 R2
-R27
-R28
-R29
+R42
+R43
+R44
 L0 34
 R3
 r1
 !s85 0
 31
-R4
-R30
-R31
+R34
+R45
+R46
 !i113 1
 R5
 R6
@@ -373,64 +437,86 @@ vvDFFE_DP
 R0
 !i10b 1
 !s100 kki1^m<<MG`C6UO?oEgBK1
-I^aAk3CYliel]<fDCREWFM2
+I]X3jNzCcmVPAkZ0V9A<]Z1
 R1
 R2
-R7
-R8
-R9
+R15
+R16
+R17
 L0 84
 R3
 r1
 !s85 0
 31
 R4
-R10
-R11
+R18
+R19
 !i113 1
 R5
 R6
 nv@d@f@f@e_@d@p
 vvDFFE_IR
-R0
+R25
 !i10b 1
 !s100 <@]NWGkc[:_XHBWc`J=zd0
-Img]FIGOmRbCbi2WMFB?@W3
+IL>1F?zV^fzo>@YBE0f5;T1
 R1
 R2
-R22
-R23
-R24
+R31
+R32
+R33
 L0 10
 R3
 r1
 !s85 0
 31
-R4
-R25
-R26
+R34
+R35
+R36
 !i113 1
 R5
 R6
 nv@d@f@f@e_@i@r
-vvselMux
+vvDFFE_PC
 R0
 !i10b 1
-!s100 ?NcTOZakWR8ooM2ANaaSg3
-IJ9DA4`RHgo=mTGaJRIfI10
+!s100 H1c6iHi<kP6Y[Ej4LF>Fe2
+I?SPU3WM[8bn_^oYS^gmTI3
 R1
 R2
 R7
 R8
 R9
+L0 102
+R3
+r1
+!s85 0
+31
+R4
+R10
+R11
+!i113 1
+R5
+R6
+nv@d@f@f@e_@p@c
+vvselMux
+R0
+!i10b 1
+!s100 ?NcTOZakWR8ooM2ANaaSg3
+I>Y^<4L=j4[gGdEM:HaIm=0
+R1
+R2
+R15
+R16
+R17
 L0 99
 R3
 r1
 !s85 0
 31
 R4
-R10
-R11
+R18
+R19
 !i113 1
 R5
 R6

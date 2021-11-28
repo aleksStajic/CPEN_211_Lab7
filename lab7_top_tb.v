@@ -77,6 +77,8 @@ module lab7_top_tb;
 
         check_regs(`R0, 16'd7);
 
+        $stop;
+
         #50;
         
         check_regs(`R1, 16'd2);

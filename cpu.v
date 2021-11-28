@@ -28,7 +28,7 @@ module cpu(clk, reset, in, out, N, V, Z, w, mem_cmd, mem_addr);
     wire [8:0] PC;
     wire reset_pc;
     wire addr_sel;
-    wire [8:0] mem_addr;
+    reg [8:0] mem_addr;
     wire [1:0] mem_cmd;
 
     datapath DP(.clk(clk), // recall from Lab 4 that KEY0 is 1 when NOT pushed
@@ -92,8 +92,21 @@ module cpu(clk, reset, in, out, N, V, Z, w, mem_cmd, mem_addr);
 
     assign next_pc = top_cntrl[1] ? 9'd0 : PC + 1'b1; //intantiating PC multiplexer
 
-    assign mem_addr = top_cntrl[0] ? PC : 9'd0;
+    //assign mem_addr = top_cntrl[0] ? PC : 9'd0;
 
+    always @* begin 
+      if (mem_cmd === 2'b00) begin
+        mem_addr = {9{1'bx}};
+      end else begin
+        if (top_cntrl[0] === 1'b1) begin
+          mem_addr = PC;
+        end else if (top_cntrl[0] === 1'b0) begin
+          mem_addr = 9'd0;
+        end else begin
+          mem_addr = {9{1'bx}};
+        end
+      end
+    end
 
 endmodule
 
@@ -112,3 +125,4 @@ module vDFFE_PC(clk, en, in, out) ;
   always @(posedge clk)
     out = next_out;  
 endmodule
+

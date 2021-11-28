@@ -19,7 +19,7 @@ module lab7_top(KEY,SW,LEDR,HEX0,HEX1,HEX2,HEX3,HEX4,HEX5);
     wire enable_tri;
 
     RAM MEM(~KEY[0], mem_addr_bus[7:0], mem_addr_bus[7:0], 0, 0, dout_bus); //instantiating RAM
-    cpu CPU(~KEY[0], ~KEY[1], ~KEY[2], ~KEY[3], read_data, cpu_out, N, V, Z, mem_cmd_bus, mem_addr_bus); //CPU instantiation
+    cpu CPU(~KEY[0], ~KEY[1], read_data, cpu_out, N, V, Z, mem_cmd_bus, mem_addr_bus); //CPU instantiation
 
     assign enable_tri = (`MREAD === mem_cmd_bus) & (mem_addr_bus[8] === 1'b0); //AND gate input to tri-state driver
     assign read_data = enable_tri ? dout_bus : {16{1'bz}}; //setting up tri-state driver logic    

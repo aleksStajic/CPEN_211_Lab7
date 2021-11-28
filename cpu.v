@@ -1,5 +1,5 @@
-module cpu(clk,reset,s,load,in,out,N,V,Z, mem_cmd, mem_addr);
-    input clk, reset, s, load;
+module cpu(clk, reset, in, out, N, V, Z, mem_cmd, mem_addr);
+    input clk, reset;
     input [15:0] in;
     output [15:0] out;
     output N, V, Z, w;
@@ -20,6 +20,7 @@ module cpu(clk,reset,s,load,in,out,N,V,Z, mem_cmd, mem_addr);
     wire [1:0] nsel_fsm; // output from fsm
     wire [15:0] IR_out;
     wire [8:0] dp_cntrl;
+    wire [3:0] top_cntrl;
 
     //Memory wires
     wire load_pc;
@@ -61,7 +62,7 @@ module cpu(clk,reset,s,load,in,out,N,V,Z, mem_cmd, mem_addr);
                 .sximm5(sximm5_out)
     );
 
-    instr_reg IR(clk, load, in, IR_out); //instantiating instruction register
+    instr_reg IR(clk, top_cntrl[2], in, IR_out); //instantiating instruction register
 
     instr_dec ID(.ID_in (IR_out), 
                 .opcode (opcode_out), 
@@ -77,20 +78,21 @@ module cpu(clk,reset,s,load,in,out,N,V,Z, mem_cmd, mem_addr);
 
     fsm_control FSM(.clk(clk),
                     .reset(reset),
-                    .s_in(s), 
                     .opcode_in(opcode_out), 
                     .op_in(op_out), 
                     .nsel(nsel_fsm), 
                     .w_out (w), 
                     .DP_CNTRL(dp_cntrl)
+                    .TOP_CNTRL(top_cntrl)
+                    .MEM_CMD(mem_cmd)
                  );
 
     
-    vDFFE_PC PCREG(clk, load_pc, next_pc, PC); //instantiating program counter register with load enable
+    vDFFE_PC PCREG(clk, top_cntrl[3], next_pc, PC); //instantiating program counter register with load enable
 
-    assign next_pc = reset_pc ? 9'd0 : PC + 1'b1; //intantiating PC multiplexer
+    assign next_pc = top_cntrl[1] ? 9'd0 : PC + 1'b1; //intantiating PC multiplexer
 
-    assign mem_addr = addr_sel ? PC : 9'd0;
+    assign mem_addr = top_cntrl[0] ? PC : 9'd0;
 
 
 endmodule

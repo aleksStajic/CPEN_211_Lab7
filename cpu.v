@@ -1,8 +1,14 @@
-module cpu(clk,reset,s,load,in,out,N,V,Z,w);
+module cpu(clk,reset,s,load,in,out,N,V,Z, mem_cmd, mem_addr);
     input clk, reset, s, load;
     input [15:0] in;
     output [15:0] out;
     output N, V, Z, w;
+
+    //Memory outputs
+    output [1:0] mem_cmd;
+    output [8:0] mem_addr;
+    //--------------------
+    
     wire [2:0] opcode_out;
     wire [1:0] op_out;
     wire [1:0] shift_out;
@@ -12,10 +18,17 @@ module cpu(clk,reset,s,load,in,out,N,V,Z,w);
     wire [2:0] readnum_out;
     wire [2:0] writenum_out;
     wire [1:0] nsel_fsm; // output from fsm
-
     wire [15:0] IR_out;
-
     wire [8:0] dp_cntrl;
+
+    //Memory wires
+    wire load_pc;
+    wire [8:0] next_pc;
+    wire [8:0] PC;
+    wire reset_pc;
+    wire addr_sel;
+    wire [8:0] mem_addr;
+    wire [1:0] mem_cmd;
 
     datapath DP(.clk(clk), // recall from Lab 4 that KEY0 is 1 when NOT pushed
 
@@ -72,4 +85,28 @@ module cpu(clk,reset,s,load,in,out,N,V,Z,w);
                     .DP_CNTRL(dp_cntrl)
                  );
 
+    
+    vDFFE_PC PCREG(clk, load_pc, next_pc, PC); //instantiating program counter register with load enable
+
+    assign next_pc = reset_pc ? 9'd0 : PC + 1'b1; //intantiating PC multiplexer
+
+    assign mem_addr = addr_sel ? PC : 9'd0;
+
+
+endmodule
+
+//This module was copied from the example
+//on the Lab5 example slides
+module vDFFE_PC(clk, en, in, out) ;
+  parameter n = 1;  // width
+  input clk, en ;
+  input  [n-1:0] in ;
+  output [n-1:0] out ;
+  reg    [n-1:0] out ;
+  wire   [n-1:0] next_out ;
+
+  assign next_out = en ? in : out;
+
+  always @(posedge clk)
+    out = next_out;  
 endmodule

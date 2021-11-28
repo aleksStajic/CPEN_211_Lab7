@@ -1,20 +1,4 @@
-C:/Users/sstaj/Desktop/UBC/CPEN_211/CPEN_211_Lab7/CPEN_211_Lab7/cpu.v {1 {vlog -work work -stats=none C:/Users/sstaj/Desktop/UBC/CPEN_211/CPEN_211_Lab7/CPEN_211_Lab7/cpu.v
-Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
--- Compiling module cpu
--- Compiling module vDFFE_PC
-
-Top level modules:
-	cpu
-
-} {} {}} C:/Users/sstaj/Desktop/UBC/CPEN_211/CPEN_211_Lab7/CPEN_211_Lab7/fsm_controller.v {1 {vlog -work work -stats=none C:/Users/sstaj/Desktop/UBC/CPEN_211/CPEN_211_Lab7/CPEN_211_Lab7/fsm_controller.v
-Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
--- Compiling module fsm_control
--- Compiling module vDFF_CNTRL
-
-Top level modules:
-	fsm_control
-
-} {} {}} C:/Users/sstaj/Desktop/UBC/CPEN_211/CPEN_211_Lab7/CPEN_211_Lab7/instr_dec.v {1 {vlog -work work -stats=none C:/Users/sstaj/Desktop/UBC/CPEN_211/CPEN_211_Lab7/CPEN_211_Lab7/instr_dec.v
+{C:/Users/tnt99/Downloads/School Downloads/2nd Year ECE/Sem1/CPEN 211/Lab7/CPEN_211_Lab7/instr_dec.v} {1 {vlog -work work -stats=none {C:/Users/tnt99/Downloads/School Downloads/2nd Year ECE/Sem1/CPEN 211/Lab7/CPEN_211_Lab7/instr_dec.v}
 Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
 -- Compiling module instr_dec
 -- Compiling module nsel_mux
@@ -23,14 +7,7 @@ Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  
 Top level modules:
 	instr_dec
 
-} {} {}} C:/Users/sstaj/Desktop/UBC/CPEN_211/CPEN_211_Lab7/CPEN_211_Lab7/lab7_top_tb.v {1 {vlog -work work -stats=none {C:\Users\sstaj\Desktop\UBC\CPEN_211\CPEN_211_Lab7\CPEN_211_Lab7\lab7_top_tb.v}
-Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
--- Compiling module lab7_top_tb
-
-Top level modules:
-	lab7_top_tb
-
-} {} {}} C:/Users/sstaj/Desktop/UBC/CPEN_211/CPEN_211_Lab7/CPEN_211_Lab7/instr_reg.v {1 {vlog -work work -stats=none C:/Users/sstaj/Desktop/UBC/CPEN_211/CPEN_211_Lab7/CPEN_211_Lab7/instr_reg.v
+} {} {}} {C:/Users/tnt99/Downloads/School Downloads/2nd Year ECE/Sem1/CPEN 211/Lab7/CPEN_211_Lab7/instr_reg.v} {1 {vlog -work work -stats=none {C:/Users/tnt99/Downloads/School Downloads/2nd Year ECE/Sem1/CPEN 211/Lab7/CPEN_211_Lab7/instr_reg.v}
 Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
 -- Compiling module instr_reg
 -- Compiling module vDFFE_IR
@@ -38,14 +15,21 @@ Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  
 Top level modules:
 	instr_reg
 
-} {} {}} C:/Users/sstaj/Desktop/UBC/CPEN_211/CPEN_211_Lab7/CPEN_211_Lab7/shifter.v {1 {vlog -work work -stats=none C:/Users/sstaj/Desktop/UBC/CPEN_211/CPEN_211_Lab7/CPEN_211_Lab7/shifter.v
+} {} {}} {C:/Users/tnt99/Downloads/School Downloads/2nd Year ECE/Sem1/CPEN 211/Lab7/CPEN_211_Lab7/shifter.v} {1 {vlog -work work -stats=none {C:/Users/tnt99/Downloads/School Downloads/2nd Year ECE/Sem1/CPEN 211/Lab7/CPEN_211_Lab7/shifter.v}
 Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
 -- Compiling module shifter
 
 Top level modules:
 	shifter
 
-} {} {}} C:/Users/sstaj/Desktop/UBC/CPEN_211/CPEN_211_Lab7/CPEN_211_Lab7/datapath.v {1 {vlog -work work -stats=none C:/Users/sstaj/Desktop/UBC/CPEN_211/CPEN_211_Lab7/CPEN_211_Lab7/datapath.v
+} {} {}} {C:/Users/tnt99/Downloads/School Downloads/2nd Year ECE/Sem1/CPEN 211/Lab7/CPEN_211_Lab7/fsm_controller_tb.v} {1 {vlog -work work -stats=none {C:/Users/tnt99/Downloads/School Downloads/2nd Year ECE/Sem1/CPEN 211/Lab7/CPEN_211_Lab7/fsm_controller_tb.v}
+Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+-- Compiling module fsm_control_tb
+
+Top level modules:
+	fsm_control_tb
+
+} {} {}} {C:/Users/tnt99/Downloads/School Downloads/2nd Year ECE/Sem1/CPEN 211/Lab7/CPEN_211_Lab7/datapath.v} {1 {vlog -work work -stats=none {C:/Users/tnt99/Downloads/School Downloads/2nd Year ECE/Sem1/CPEN 211/Lab7/CPEN_211_Lab7/datapath.v}
 Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
 -- Compiling module datapath
 -- Compiling module vDFFE_DP
@@ -54,7 +38,7 @@ Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  
 Top level modules:
 	datapath
 
-} {} {}} C:/Users/sstaj/Desktop/UBC/CPEN_211/CPEN_211_Lab7/CPEN_211_Lab7/lab7_top.v {1 {vlog -work work -stats=none {C:\Users\sstaj\Desktop\UBC\CPEN_211\CPEN_211_Lab7\CPEN_211_Lab7\lab7_top.v}
+} {} {}} {C:/Users/tnt99/Downloads/School Downloads/2nd Year ECE/Sem1/CPEN 211/Lab7/CPEN_211_Lab7/lab7_top.v} {1 {vlog -work work -stats=none {C:/Users/tnt99/Downloads/School Downloads/2nd Year ECE/Sem1/CPEN 211/Lab7/CPEN_211_Lab7/lab7_top.v}
 Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
 -- Compiling module lab7_top
 -- Compiling module RAM
@@ -62,14 +46,28 @@ Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  
 Top level modules:
 	lab7_top
 
-} {} {}} C:/Users/sstaj/Desktop/UBC/CPEN_211/CPEN_211_Lab7/CPEN_211_Lab7/alu.v {1 {vlog -work work -stats=none C:/Users/sstaj/Desktop/UBC/CPEN_211/CPEN_211_Lab7/CPEN_211_Lab7/alu.v
+} {} {}} {C:/Users/tnt99/Downloads/School Downloads/2nd Year ECE/Sem1/CPEN 211/Lab7/CPEN_211_Lab7/alu.v} {1 {vlog -work work -stats=none {C:/Users/tnt99/Downloads/School Downloads/2nd Year ECE/Sem1/CPEN 211/Lab7/CPEN_211_Lab7/alu.v}
 Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
 -- Compiling module ALU
 
 Top level modules:
 	ALU
 
-} {} {}} C:/Users/sstaj/Desktop/UBC/CPEN_211/CPEN_211_Lab7/CPEN_211_Lab7/regfile.v {1 {vlog -work work -stats=none C:/Users/sstaj/Desktop/UBC/CPEN_211/CPEN_211_Lab7/CPEN_211_Lab7/regfile.v
+} {} {}} {C:/Users/tnt99/Downloads/School Downloads/2nd Year ECE/Sem1/CPEN 211/Lab7/CPEN_211_Lab7/datapath_tb.v} {1 {vlog -work work -stats=none {C:/Users/tnt99/Downloads/School Downloads/2nd Year ECE/Sem1/CPEN 211/Lab7/CPEN_211_Lab7/datapath_tb.v}
+Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+-- Compiling module datapath_tb
+
+Top level modules:
+	datapath_tb
+
+} {} {}} {C:/Users/tnt99/Downloads/School Downloads/2nd Year ECE/Sem1/CPEN 211/Lab7/CPEN_211_Lab7/cpu_tb.v} {1 {vlog -work work -stats=none {C:/Users/tnt99/Downloads/School Downloads/2nd Year ECE/Sem1/CPEN 211/Lab7/CPEN_211_Lab7/cpu_tb.v}
+Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+-- Compiling module cpu_tb
+
+Top level modules:
+	cpu_tb
+
+} {} {}} {C:/Users/tnt99/Downloads/School Downloads/2nd Year ECE/Sem1/CPEN 211/Lab7/CPEN_211_Lab7/regfile.v} {1 {vlog -work work -stats=none {C:/Users/tnt99/Downloads/School Downloads/2nd Year ECE/Sem1/CPEN 211/Lab7/CPEN_211_Lab7/regfile.v}
 Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
 -- Compiling module regfile
 -- Compiling module vDFFE
@@ -78,5 +76,21 @@ Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  
 
 Top level modules:
 	regfile
+
+} {} {}} {C:/Users/tnt99/Downloads/School Downloads/2nd Year ECE/Sem1/CPEN 211/Lab7/CPEN_211_Lab7/cpu.v} {1 {vlog -work work -stats=none {C:/Users/tnt99/Downloads/School Downloads/2nd Year ECE/Sem1/CPEN 211/Lab7/CPEN_211_Lab7/cpu.v}
+Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+-- Compiling module cpu
+-- Compiling module vDFFE_PC
+
+Top level modules:
+	cpu
+
+} {} {}} {C:/Users/tnt99/Downloads/School Downloads/2nd Year ECE/Sem1/CPEN 211/Lab7/CPEN_211_Lab7/fsm_controller.v} {1 {vlog -work work -stats=none {C:/Users/tnt99/Downloads/School Downloads/2nd Year ECE/Sem1/CPEN 211/Lab7/CPEN_211_Lab7/fsm_controller.v}
+Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+-- Compiling module fsm_control
+-- Compiling module vDFF_CNTRL
+
+Top level modules:
+	fsm_control
 
 } {} {}}

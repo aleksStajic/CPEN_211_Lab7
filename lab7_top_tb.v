@@ -73,20 +73,34 @@ module lab7_top_tb;
         sim_KEY[1] = 1'b0; //asserting reset
         #10; //now we are in reset state
         sim_KEY[1] = 1'b1; //turning off reset
+       
         #60;
+        check_regs(`R0, 16'd5);
+        
+        //back in IF1
+        #90;
+        check_regs(`R1, 16'hABCD);
 
-        check_regs(`R0, 16'd7);
+        #50;   
+        check_regs(`R2, 16'd6);
+
+        #80;
+        if(DUT.MEM.mem[6] !== 16'hABCD) begin
+            $display("ERROR at time %0d, memory held %b, expected %b", $time, DUT.MEM.mem[6], 16'hABCD);
+        end else begin
+            $display("Passed check 4 at time %0d", $time);
+        end
+
+        $stop;
 
         #50;
         
-        check_regs(`R1, 16'd2);
-
+        //check_regs(`R1, 16');
         #70;
         if(DUT.CPU.out !== 16'd16) begin
             $display("ERROR at time %0d, cpu out was %b, expected %b", $time, DUT.CPU.out, 16'd16);
             err = 1'b1;
         end
-
         #10;
         
         check_regs(`R2, 16'd16);

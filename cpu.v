@@ -1,6 +1,7 @@
-module cpu(clk, reset, in, out, N, V, Z, w, mem_cmd, mem_addr);
+module cpu(clk, reset, in, out, N, V, Z, w, mem_cmd, mem_addr, read_data);
     input clk, reset;
     input [15:0] in;
+    input [15:0] read_data;
     output [15:0] out;
     output N, V, Z, w;
 
@@ -28,8 +29,10 @@ module cpu(clk, reset, in, out, N, V, Z, w, mem_cmd, mem_addr);
     wire [8:0] PC;
     wire reset_pc;
     wire addr_sel;
-    wire [8:0] mem_addr;
+    reg [8:0] mem_addr;
     wire [1:0] mem_cmd;
+    wire load_addr;
+    wire [8:0] DA_out;
 
     datapath DP(.clk(clk), // recall from Lab 4 that KEY0 is 1 when NOT pushed
 
@@ -57,8 +60,8 @@ module cpu(clk, reset, in, out, N, V, Z, w, mem_cmd, mem_addr);
                 .V_out(V),
                 .N_out(N),
                 .datapath_out(out),
-                .mdata(16'd0),
-                .PC(8'd0),
+                .mdata(read_data),
+                .PC(PC),
                 .sximm5(sximm5_out)
     );
 
@@ -84,16 +87,30 @@ module cpu(clk, reset, in, out, N, V, Z, w, mem_cmd, mem_addr);
                     .w_out (w), 
                     .DP_CNTRL(dp_cntrl),
                     .TOP_CNTRL(top_cntrl),
-                    .MEM_CMD(mem_cmd)
+                    .MEM_CMD(mem_cmd), 
+                    .load_addr(load_addr)
                  );
 
     
     vDFFE_PC #(9) PCREG(clk, top_cntrl[3], next_pc, PC); //instantiating program counter register with load enable
+    vDFFE_DA #(9) DAREG(clk, load_addr, out[8:0], DA_out); //instantiating Data Address register
 
     assign next_pc = top_cntrl[1] ? 9'd0 : PC + 1'b1; //intantiating PC multiplexer
 
-    assign mem_addr = top_cntrl[0] ? PC : 9'd0;
-
+    //Address select mux implemented with always block
+    always @* begin 
+      if (mem_cmd === 2'b00) begin
+        mem_addr = {9{1'bx}};
+      end else begin
+        if (top_cntrl[0] === 1'b1) begin
+          mem_addr = PC;
+        end else if (top_cntrl[0] === 1'b0) begin
+          mem_addr = DA_out;
+        end else begin
+          mem_addr = {9{1'bx}};
+        end
+      end
+    end
 
 endmodule
 
@@ -112,3 +129,4 @@ module vDFFE_PC(clk, en, in, out) ;
   always @(posedge clk)
     out = next_out;  
 endmodule
+

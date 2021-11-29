@@ -2,7 +2,6 @@
 `define MREAD 2'b01
 `define MWRITE 2'b10
 
-
 module lab7_top(KEY,SW,LEDR,HEX0,HEX1,HEX2,HEX3,HEX4,HEX5);
     input [3:0] KEY;
     input [9:0] SW;
@@ -17,12 +16,15 @@ module lab7_top(KEY,SW,LEDR,HEX0,HEX1,HEX2,HEX3,HEX4,HEX5);
     wire [1:0] mem_cmd_bus;
     wire [8:0] mem_addr_bus;
     wire enable_tri;
+    wire write;
 
-    RAM MEM(~KEY[0], mem_addr_bus[7:0], mem_addr_bus[7:0], 1'b0, 16'd0, dout_bus); //instantiating RAM
-    cpu CPU(~KEY[0], ~KEY[1], read_data, cpu_out, N, V, Z, w, mem_cmd_bus, mem_addr_bus); //CPU instantiation
+    RAM MEM(~KEY[0], mem_addr_bus[7:0], mem_addr_bus[7:0], write, cpu_out, dout_bus); //instantiating RAM
+    cpu CPU(~KEY[0], ~KEY[1], read_data, cpu_out, N, V, Z, w, mem_cmd_bus, mem_addr_bus, dout_bus); //CPU instantiation
 
-    assign enable_tri = (`MREAD === mem_cmd_bus) & (mem_addr_bus[8] === 1'b0); //AND gate input to tri-state driver
-    assign read_data = enable_tri ? dout_bus : {16{1'bz}}; //setting up tri-state driver logic    
+    assign enable_tri = (`MREAD == mem_cmd_bus) & (mem_addr_bus[8] == 1'b0); //AND gate input to tri-state driver
+    assign read_data = enable_tri ? dout_bus : {16{1'bz}}; //setting up tri-state driver logic   
+    assign write = (mem_cmd_bus == `MWRITE) & (mem_addr_bus[8] == 1'b0); //comparator for write input to RAM
+
 
 endmodule
 

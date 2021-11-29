@@ -61,7 +61,7 @@ module cpu(clk, reset, in, out, N, V, Z, w, mem_cmd, mem_addr, read_data);
                 .N_out(N),
                 .datapath_out(out),
                 .mdata(read_data),
-                .PC(PC),
+                .PC(8'd0), //temporarily zero
                 .sximm5(sximm5_out)
     );
 
@@ -92,8 +92,8 @@ module cpu(clk, reset, in, out, N, V, Z, w, mem_cmd, mem_addr, read_data);
                  );
 
     
-    vDFFE_PC #(9) PCREG(clk, top_cntrl[3], next_pc, PC); //instantiating program counter register with load enable
-    vDFFE_DA #(9) DAREG(clk, load_addr, out[8:0], DA_out); //instantiating Data Address register
+    vDFFE_CPU #(9) PCREG(clk, top_cntrl[3], next_pc, PC); //instantiating program counter register with load enable
+    vDFFE_CPU #(9) DAREG(clk, load_addr, out[8:0], DA_out); //instantiating Data Address register
 
     assign next_pc = top_cntrl[1] ? 9'd0 : PC + 1'b1; //intantiating PC multiplexer
 
@@ -116,7 +116,7 @@ endmodule
 
 //This module was copied from the example
 //on the Lab5 example slides
-module vDFFE_PC(clk, en, in, out) ;
+module vDFFE_CPU(clk, en, in, out) ;
   parameter n = 1;  // width
   input clk, en ;
   input  [n-1:0] in ;

@@ -14,6 +14,7 @@
 `define S_UpdatePC 4'b1010
 `define S_RWRAM 4'b1110
 `define S_UPDATEADDR 4'b1111 
+`define S_STR_RD 4'b1101
 
 `define OPCODE_MOV 3'b110
 `define OPCODE_ALU 3'b101
@@ -47,6 +48,7 @@ module fsm_control(clk, reset, opcode_in, op_in, nsel, w_out, DP_CNTRL, TOP_CNTR
     reg [1:0] nsel;
     reg [3:0] TOP_CNTRL;
     reg [1:0] MEM_CMD;
+    reg load_addr;
 
     vDFF_CNTRL #(`SW) U0(clk, next_state_reset, present_state); //instantiating flip-flop
 
@@ -63,22 +65,24 @@ module fsm_control(clk, reset, opcode_in, op_in, nsel, w_out, DP_CNTRL, TOP_CNTR
             `S_UpdatePC : {next_state, DP_CNTRL, nsel, w_out, TOP_CNTRL, MEM_CMD} = {`S_DECODE, 9'd0, 2'b11, 1'b1, 4'b1000, `MNONE};
 
             `S_DECODE : if(opcode_in === `OPCODE_MOV && op_in === 2'b10) begin
-                {next_state, DP_CNTRL, nsel, w_out, TOP_CNTRL, MEM_CMD} = {`S_WriteReg, 9'd0, 2'b11, 1'b0, 6'd0, `MNONE};
+                {next_state, DP_CNTRL, nsel, w_out, TOP_CNTRL, MEM_CMD} = {`S_WriteReg, 9'd0, 2'b11, 1'b0, 4'd0, `MNONE};
             end else if(opcode_in === `OPCODE_MOV && op_in === 2'b00) begin
-                {next_state, DP_CNTRL, nsel, w_out, TOP_CNTRL, MEM_CMD} = {`S_GETB, 9'd0, 2'b11, 1'b0, 6'd0, `MNONE};
+                {next_state, DP_CNTRL, nsel, w_out, TOP_CNTRL, MEM_CMD} = {`S_GETB, 9'd0, 2'b11, 1'b0, 4'd0, `MNONE};
             end else if(opcode_in === `OPCODE_ALU) begin
                 if (op_in === 2'b11) begin // MVN case
-                    {next_state, DP_CNTRL, nsel, w_out, TOP_CNTRL, MEM_CMD} = {`S_GETB, 9'd0, 2'b11, 1'b0, 6'd0, `MNONE};
+                    {next_state, DP_CNTRL, nsel, w_out, TOP_CNTRL, MEM_CMD} = {`S_GETB, 9'd0, 2'b11, 1'b0, 4'd0, `MNONE};
                 end else begin 
-                    {next_state, DP_CNTRL, nsel, w_out, TOP_CNTRL, MEM_CMD} = {`S_GETA, 9'd0, 2'b11, 1'b0, 6'd0, `MNONE};
+                    {next_state, DP_CNTRL, nsel, w_out, TOP_CNTRL, MEM_CMD} = {`S_GETA, 9'd0, 2'b11, 1'b0, 4'd0, `MNONE};
                 end
-            end else if(opcode_in === `OPCODE_LDR) begin
-                {next_state, DP_CNTRL, nsel, w_out, TOP_CNTRL, MEM_CMD} = {`S_GETA, 9'd0, 2'b11, 1'b0, 6'd0, `MNONE};
+            end else if((opcode_in === `OPCODE_LDR) || (opcode_in === `OPCODE_STR)) begin
+                {next_state, DP_CNTRL, nsel, w_out, TOP_CNTRL, MEM_CMD} = {`S_GETA, 9'd0, 2'b11, 1'b0, 4'd0, `MNONE};
+            end else if (opcode_in === `OPCODE_HALT) begin
+                {next_state, DP_CNTRL, nsel, w_out, TOP_CNTRL, MEM_CMD} = {`S_DECODE, 9'd0, 2'b11, 1'b0, 4'd0, `MNONE};
             end else begin
-                {next_state, DP_CNTRL, nsel, w_out, TOP_CNTRL, MEM_CMD} = {`S_DECODE, 9'bxxxxxxxxx, 2'bxx, 1'b0, 6'd0, `MNONE};
+                {next_state, DP_CNTRL, nsel, w_out, TOP_CNTRL, MEM_CMD} = {`S_DECODE, 9'bxxxxxxxxx, 2'bxx, 1'b0, 4'd0, `MNONE};
             end
 
-            `S_GETA : if(opcode_in === `OPCODE_LDR) begin
+            `S_GETA : if((opcode_in === `OPCODE_LDR) || (opcode_in === `OPCODE_STR)) begin
                 {next_state, DP_CNTRL, nsel, w_out, MEM_CMD} = {`S_ADD, {4'b1000, 2'b00, 2'b00, 1'b0}, 2'b00, 1'b0, `MNONE}; //Rn
             end else begin
                 {next_state, DP_CNTRL, nsel, w_out, MEM_CMD} = {`S_GETB, {4'b1000, 2'b00, 2'b00, 1'b0}, 2'b00, 1'b0, `MNONE}; //Rn
@@ -106,26 +110,30 @@ module fsm_control(clk, reset, opcode_in, op_in, nsel, w_out, DP_CNTRL, TOP_CNTR
 
             `S_MOVSH_ALU : {next_state, DP_CNTRL, nsel, w_out} = {`S_WriteReg, {4'b0010, 2'b10, 2'b00, 1'b0}, 2'b01, 1'b0}; //Rd  //if doing register MOV, make sure to set asel = 1, since doing implicit "add" with 0
                   
-            `S_ADD : if(opcode_in == `OPCODE_LDR) begin
+            `S_ADD : if(opcode_in === `OPCODE_LDR) begin
                 {next_state, DP_CNTRL, nsel, w_out, MEM_CMD} = {`S_UPDATEADDR, {4'b0010, 2'b01, 2'b00, 1'b0}, 2'b11, 1'b0, `MNONE}; // no nsel
-            end else begin
+            end else if (opcode_in === `OPCODE_STR) begin
+                {next_state, DP_CNTRL, nsel, w_out, MEM_CMD} = {`S_UPDATEADDR, {4'b0110, 2'b01, 2'b00, 1'b0}, 2'b01, 1'b0, `MNONE}; // nsel = Rd, load b high
+            end else begin 
                 {next_state, DP_CNTRL, nsel, w_out, MEM_CMD} = {`S_WriteReg, {4'b0010, 2'b00, 2'b00, 1'b0}, 2'b11, 1'b0, `MNONE}; // no nsel
             end
 
             `S_UPDATEADDR : if(opcode_in == `OPCODE_LDR) begin
                 {next_state, DP_CNTRL, nsel, w_out, load_addr, MEM_CMD} = {`S_RWRAM, {4'b0000, 2'b00, 2'b00, 1'b0}, 2'b11, 1'b0, 1'b1, `MNONE};
             end else if(opcode_in == `OPCODE_STR) begin
-                
+                {next_state, DP_CNTRL, nsel, w_out, load_addr, MEM_CMD} = {`S_RWRAM, {4'b0010, 2'b10, 2'b00, 1'b0}, 2'b11, 1'b0, 1'b1, `MNONE};
             end else begin
-                
+                {next_state, DP_CNTRL, nsel, w_out, load_addr, MEM_CMD} = {`S_STR_RD, {4'b0000, 2'b00, 2'b00, 1'b0}, 2'b11, 1'b0, 1'b0, `MNONE};
             end
+
+            `S_STR_RD : {next_state, DP_CNTRL, nsel, w_out, load_addr, MEM_CMD} = {`S_RWRAM, {4'b0010, 2'b10, 2'b00, 1'b0}, 2'b11, 1'b0, 1'b0, `MNONE};
 
             `S_RWRAM : if(opcode_in == `OPCODE_LDR) begin
                 {next_state, DP_CNTRL, nsel, w_out, load_addr, MEM_CMD} = {`S_WriteReg, {4'b0000, 2'b00, 2'b00, 1'b0}, 2'b11, 1'b0, 1'b0, `MREAD};
             end else if(opcode_in == `OPCODE_STR) begin
-                
+                {next_state, DP_CNTRL, nsel, w_out, load_addr, MEM_CMD} = {`S_IF1, {4'b0000, 2'b00, 2'b00, 1'b0}, 2'b11, 1'b0, 1'b0, `MWRITE};
             end else begin
-                
+                {next_state, DP_CNTRL, nsel, w_out, load_addr, MEM_CMD} = {`S_RWRAM, {4'b0000, 2'b00, 2'b00, 1'b0}, 2'b11, 1'b0, 1'b0, `MNONE};
             end
 
             `S_CMP : {next_state, DP_CNTRL, nsel, w_out} = {`S_IF1, {4'b0001, 2'b00, 2'b00, 1'b0}, 2'b11, 1'b0}; // no nsel
@@ -139,7 +147,7 @@ module fsm_control(clk, reset, opcode_in, op_in, nsel, w_out, DP_CNTRL, TOP_CNTR
             if(opcode_in === `OPCODE_MOV && op_in === 2'b10) begin //if immediate move, write to Rn
                 {next_state, DP_CNTRL, nsel, w_out} = {`S_IF1, {4'b0000, 2'b00, 2'b10, 1'b1}, 2'b00, 1'b0}; //Rn  
             end else if(opcode_in === `OPCODE_LDR) begin
-                {next_state, DP_CNTRL, nsel, w_out, mem_cmd} = {`S_IF1, {4'b0000, 2'b00, 2'b11, 1'b1}, 2'b00, 1'b0, `MNONE}; //Rn            
+                {next_state, DP_CNTRL, nsel, w_out, MEM_CMD} = {`S_IF1, {4'b0000, 2'b00, 2'b11, 1'b1}, 2'b00, 1'b0, `MNONE}; //Rn            
             end else begin //else, we set vsel to 0
                 {next_state, DP_CNTRL, nsel, w_out} = {`S_IF1, {4'b0000, 2'b00, 2'b00, 1'b1}, 2'b01, 1'b0}; //Rd
             end

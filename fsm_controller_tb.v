@@ -1,4 +1,4 @@
-`define SW 4 //placeholder
+ `define SW 4 //placeholder
 `define S_WAIT 4'b0000//wait state
 `define S_DECODE 4'b0001
 `define S_GETA 4'b0011
@@ -223,4 +223,3 @@ module fsm_control_tb;
         $stop;
     end
 endmodule
-

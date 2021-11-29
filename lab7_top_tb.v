@@ -91,6 +91,8 @@ module lab7_top_tb;
             $display("Passed check 4 at time %0d", $time);
         end
 
+        #50;
+
         $stop;
 
         #50;

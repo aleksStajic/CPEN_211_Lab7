@@ -55,14 +55,17 @@ module fsm_control(clk, reset, opcode_in, op_in, nsel, w_out, DP_CNTRL, TOP_CNTR
     assign next_state_reset = reset ? `S_WAIT : next_state; //if reset is pressed, we move to the wait state
 
     always @* begin
+        MEM_CMD = 2'b00; //initializing MEM_CMD
+        TOP_CNTRL = 4'd0; //initializing TOP_CNTRL
+        load_addr = 1'b0; //initializing load_addr
         case(present_state)
             `S_WAIT : {next_state, DP_CNTRL, nsel, w_out, TOP_CNTRL, MEM_CMD} = {`S_IF1, 9'd0, 2'b11, 1'b1, 4'b1010, `MNONE};
 
             `S_IF1 : {next_state, DP_CNTRL, nsel, w_out, TOP_CNTRL, MEM_CMD} = {`S_IF2, 9'd0, 2'b11, 1'b1, 4'b0001, `MREAD};
 
-            `S_IF2 : {next_state, DP_CNTRL, nsel, w_out, TOP_CNTRL, MEM_CMD} = {`S_UpdatePC, 9'd0, 2'b11, 1'b1, 4'b0101, `MREAD};
+            `S_IF2 : {next_state, DP_CNTRL, nsel, w_out, TOP_CNTRL, MEM_CMD} = {`S_UpdatePC, 9'd0, 2'b11, 1'b0, 4'b0101, `MREAD};
 
-            `S_UpdatePC : {next_state, DP_CNTRL, nsel, w_out, TOP_CNTRL, MEM_CMD} = {`S_DECODE, 9'd0, 2'b11, 1'b1, 4'b1000, `MNONE};
+            `S_UpdatePC : {next_state, DP_CNTRL, nsel, w_out, TOP_CNTRL, MEM_CMD} = {`S_DECODE, 9'd0, 2'b11, 1'b0, 4'b1000, `MNONE};
 
             `S_DECODE : if(opcode_in === `OPCODE_MOV && op_in === 2'b10) begin
                 {next_state, DP_CNTRL, nsel, w_out, TOP_CNTRL, MEM_CMD} = {`S_WriteReg, 9'd0, 2'b11, 1'b0, 4'd0, `MNONE};

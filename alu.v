@@ -40,14 +40,14 @@ module ALU(Ain,Bin,ALUop,out, N, V, Z);
             end else begin
                 V = 1'b0;
             end
-        end
-            
-        if(ALUop === 2'b00) begin //overflow detection for addition
+        end else if(ALUop === 2'b00) begin //overflow detection for addition
             if((Ain[15] === Bin[15]) && (Bin[15] !== out[15])) begin 
                V = 1'b1; 
             end else begin
                 V = 1'b0;
             end
+        end else begin
+            V = 1'b0;
         end
     end
 endmodule

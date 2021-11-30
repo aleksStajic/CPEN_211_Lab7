@@ -69,8 +69,12 @@ module lab7_topIO_tb;
         end
     end
 
-    //Sample instructions to test operation
-    //MOV R0, #5
+    /* timing for insructions, staring from IF1
+        MOV IMM #50
+        MOV SH #70
+        LDR #90
+        STR #80
+    */
 
     initial begin
         err = 1'b0;
@@ -80,33 +84,23 @@ module lab7_topIO_tb;
         #10; //get out of reset
         sim_SW[7:0] = 8'b00110100;
 
-        /* Put addreses of SW and LEDR in R0 and R1 */
+        // out of reset state
 
-        #50 // MOV R0, #80
-        $display("Finished 'MOV R0, #80' at time %0d, R0 = %0d",$time, DUT.CPU.DP.REGFILE.R0);
-        #70 // MOV R0, R0, LSL #1 // R0 = 160
-        $display("Finished 'MOV R0, R0, LSL #1' at time %0d, R0 = %0d",$time, DUT.CPU.DP.REGFILE.R0);
-        #70 // MOV R0, R0, LSL #1 // R0 = 320
-        $display("Finished 'MOV R0, R0, LSL #1' at time %0d, R0 = %0d",$time, DUT.CPU.DP.REGFILE.R0);
-        #50 // MOV R1, #64
-        $display("Finished 'MOV R1, #64' at time %0d, R1 = %0d",$time, DUT.CPU.DP.REGFILE.R1);
-        #70 // MOV R1, R1, LSL #1 // R1 = 128
-        $display("Finished 'MOV R1, R1, LSL #1' at time %0d, R1 = %0d",$time, DUT.CPU.DP.REGFILE.R1);
-        #70 // MOV R1, R1, LSL #1 // R1 = 256
-        $display("Finished 'MOV R1, R1, LSL #1' at time %0d, R1 = %0d",$time, DUT.CPU.DP.REGFILE.R1);
-
-        /* Starting to test IO */
-
-        #90 // LDR R2, [R0] // R0 = 320
-
-        #50 // MOV R3, #77
-        #80 // STR R3, [R1] // R1 = 256 
-
-        $display("finished at time %0d" , $time);
-
-        #40;
-        //if(~err) $display("PASS we gud");
+        #50; //MOV R0, SW_BASE
+        #90; //LDR R0, [R0] // R0 = 0x140
+        #90; //LDR R2, [R0] // R2 = value on SW0 through SW7 on DE1-SoC
+        #70; //MOV R3, R2, LSL #1 // R3 = R2 << 1 (which is 2*R2)
+        #50; //MOV R1, LEDR_BASE
+        #90; //LDR R1, [R1] // R1 = 0x100
+        #80; //STR R3, [R1] // display contents of R3 on red LEDs
+        //HALT
+        //SW_BASE: .word 0x0140
+        //LEDR_BASE: .word 0x0100
         
+        #10;
+        
+        if(~err) $display("PASS we gud");
+
         $stop;
         
     end
@@ -129,3 +123,33 @@ endmodule
     //        end
     //    end
     //endtask
+
+
+/*
+
+#50 // MOV R0, #80
+        // Put addreses of SW and LEDR in R0 and R1 
+
+        $display("Finished 'MOV R0, #80' at time %0d, R0 = %0d",$time, DUT.CPU.DP.REGFILE.R0);
+        #70 // MOV R0, R0, LSL #1 // R0 = 160
+        $display("Finished 'MOV R0, R0, LSL #1' at time %0d, R0 = %0d",$time, DUT.CPU.DP.REGFILE.R0);
+        #70 // MOV R0, R0, LSL #1 // R0 = 320
+        $display("Finished 'MOV R0, R0, LSL #1' at time %0d, R0 = %0d",$time, DUT.CPU.DP.REGFILE.R0);
+        #50 // MOV R1, #64
+        $display("Finished 'MOV R1, #64' at time %0d, R1 = %0d",$time, DUT.CPU.DP.REGFILE.R1);
+        #70 // MOV R1, R1, LSL #1 // R1 = 128
+        $display("Finished 'MOV R1, R1, LSL #1' at time %0d, R1 = %0d",$time, DUT.CPU.DP.REGFILE.R1);
+        #70 // MOV R1, R1, LSL #1 // R1 = 256
+        $display("Finished 'MOV R1, R1, LSL #1' at time %0d, R1 = %0d",$time, DUT.CPU.DP.REGFILE.R1);
+
+        // Starting to test IO
+
+        #90 // LDR R2, [R0] // R0 = 320
+
+        #50 // MOV R3, #77
+        #80 // STR R3, [R1] // R1 = 256 
+
+        $display("finished at time %0d" , $time);
+
+        #40;
+*/

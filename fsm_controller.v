@@ -147,7 +147,7 @@ module fsm_control(clk, reset, opcode_in, op_in, nsel, w_out, DP_CNTRL, TOP_CNTR
             if(opcode_in === `OPCODE_MOV && op_in === 2'b10) begin //if immediate move, write to Rn
                 {next_state, DP_CNTRL, nsel, w_out} = {`S_IF1, {4'b0000, 2'b00, 2'b10, 1'b1}, 2'b00, 1'b0}; //Rn  
             end else if(opcode_in === `OPCODE_LDR) begin
-                {next_state, DP_CNTRL, nsel, w_out, MEM_CMD} = {`S_IF1, {4'b0000, 2'b00, 2'b11, 1'b1}, 2'b01, 1'b0, `MNONE}; //Rd          
+                {next_state, DP_CNTRL, nsel, w_out, MEM_CMD} = {`S_IF1, {4'b0000, 2'b00, 2'b11, 1'b1}, 2'b01, 1'b0, `MREAD}; //Rd          
             end else begin //else, we set vsel to 0
                 {next_state, DP_CNTRL, nsel, w_out} = {`S_IF1, {4'b0000, 2'b00, 2'b00, 1'b1}, 2'b01, 1'b0}; //Rd
             end

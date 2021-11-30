@@ -82,22 +82,30 @@ module lab7_topIO_tb;
 
         /* Put addreses of SW and LEDR in R0 and R1 */
 
-        #50 // MOV R0, #180
-        #80 // MOV R0, R0, LSL #1
-        #80 // MOV R0, R0, LSL #1
+        #50 // MOV R0, #80
+        $display("Finished 'MOV R0, #80' at time %0d, R0 = %0d",$time, DUT.CPU.DP.REGFILE.R0);
+        #70 // MOV R0, R0, LSL #1 // R0 = 160
+        $display("Finished 'MOV R0, R0, LSL #1' at time %0d, R0 = %0d",$time, DUT.CPU.DP.REGFILE.R0);
+        #70 // MOV R0, R0, LSL #1 // R0 = 320
+        $display("Finished 'MOV R0, R0, LSL #1' at time %0d, R0 = %0d",$time, DUT.CPU.DP.REGFILE.R0);
         #50 // MOV R1, #64
-        #80 // MOV R1, R1, LSL #1
-        #80 // MOV R1, R1, LSL #1
+        $display("Finished 'MOV R1, #64' at time %0d, R1 = %0d",$time, DUT.CPU.DP.REGFILE.R1);
+        #70 // MOV R1, R1, LSL #1 // R1 = 128
+        $display("Finished 'MOV R1, R1, LSL #1' at time %0d, R1 = %0d",$time, DUT.CPU.DP.REGFILE.R1);
+        #70 // MOV R1, R1, LSL #1 // R1 = 256
+        $display("Finished 'MOV R1, R1, LSL #1' at time %0d, R1 = %0d",$time, DUT.CPU.DP.REGFILE.R1);
 
         /* Starting to test IO */
 
-        #90// LDR R2, [R0]
+        #90 // LDR R2, [R0] // R0 = 320
 
         #50 // MOV R3, #77
-        #80 // STR R3, [R1]
+        #80 // STR R3, [R1] // R1 = 256 
 
-        
-        if(~err) $display("PASS we gud");
+        $display("finished at time %0d" , $time);
+
+        #40;
+        //if(~err) $display("PASS we gud");
         
         $stop;
         

@@ -1,13 +1,13 @@
-module cpu(clk, reset, in, out, N, V, Z, w, mem_cmd, mem_addr, read_data);
+module cpu(clk, reset, in, out, N, V, Z, w, mem_cmd, mem_addr);
     input clk, reset;
     input [15:0] in;
-    input [15:0] read_data;
     output [15:0] out;
     output N, V, Z, w;
 
     //Memory outputs
     output [1:0] mem_cmd;
     output [8:0] mem_addr;
+    wire [15:0] read_data = in;
     //--------------------
     
     wire [2:0] opcode_out;
@@ -28,7 +28,7 @@ module cpu(clk, reset, in, out, N, V, Z, w, mem_cmd, mem_addr, read_data);
     wire [8:0] next_pc;
     wire [8:0] PC;
     wire reset_pc;
-    wire addr_sel;
+    //wire addr_sel;
     reg [8:0] mem_addr;
     wire [1:0] mem_cmd;
     wire load_addr;

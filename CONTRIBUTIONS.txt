@@ -1,0 +1,34 @@
+Partners:
+	1) Aleksandar Stajic, 27783273
+	2) Timothy Wong, 97792279
+
+Submission:
+	Our submission will include our entire project directory, which contains all the relevant files.
+
+Partner Contributions:
+
+	As with previous labs, we used a pair programming approach, where one partner wrote the code for a certain amount of time, while the other
+	partner helped suggest ideas for how to implement the code, and helped with debugging.
+	
+	We started with Step 1 in the lab handout. Aleksandar began creating the Lab7_top file, and tweaking signals sent to CPU, corresponding to the 
+	I/O requirements for the Lab. Next Aleksandar implemented the Read-Write Memory module as seen in Slide Set 11 into the Lab7 module. Next, he 
+	added the required components of CPU to control the program counter and inputs into memory, such as the program counter register with load enable
+	and the assorted multiplexers, AND gate and tri-state driver. Aleksandar also began modifyin the state machine to include output signals for
+	the enable logic to the instruction register and pc register. Next, Timothy took over for the state machine modifications, and added the required
+	IF1, IF2, UPDATEPC states, and we modified our WAIT state to meet the specifications of the reset state as indicated in the lab handout. Then, Timothy
+	began our Lab7_top_tb testbench where we tried executing various test instructions using the ARM assembler to load our instructions into memory, and then
+	checking the contents of registers. Both partners helped out equally with the brainstorming process, as well as the debugging procedure.
+
+	For Step 2 in the lab handout, Aleksandar began by adding the required hardware to CPU, such as the data address register, and the AND gates and comparators
+	for controlling input into memory. During this stage, the appropriate wirings were also changed to match the diagram in Figure 5 in the lab handout. Timothy took
+	over for adding the LDR, STR and HALT states in the FSM controller. Both partners assisted equally with the debugging process, and figuring out the logic behind
+	the LDR and STR state transition sequences. Both partners also helped out equally in the debugging process for this portion of the Lab. We also tested out our 
+	new additions using the sample instructions provided in the lab handout, on Timothy's computer using ModelSim.
+
+	For Step 3, Aleksandar completed the circuitry to allow for input and output from the DE1-SOC slider switches and LEDs into the Lab7_top module. This involved
+	implementing the tri-state drivers from the slider switches, as well as comparators to control the logic of the switch inputs, and a register with load enable
+	to ensure the LEDs on the board would stay on even after we move to a different sequence of instructions. Timothy took over for writing the test script for this
+	portion of the circuit, and we tested some sample instructions in ARM while involving the use of the slider switches, including the example provided in the lab 
+	handout. After ensuring everything looked like it was functioning in ModelSim, we loaded the design into Quartus on Aleksandar's computer, and tested out the sample
+	instruction in the lab handout on the board to ensure everything about our design was functional. 
+
